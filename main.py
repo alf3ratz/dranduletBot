@@ -3,11 +3,12 @@ from aiogram.filters import Command
 from aiogram.types import Message
 import asyncio
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.client.session.aiohttp import AiohttpSession
 import os
 
 
-
-bot = Bot(token=os.getenv('API_TOKEN'))
+session = AiohttpSession(proxy='http://proxy.server:3128')
+bot = Bot(token=os.getenv('API_TOKEN'), session=session)
 dp = Dispatcher()
 
 # Обработчик команды /start
